@@ -85,7 +85,7 @@ class ProductController {
     }
   }
   
-  //code bổ sung (Câu 8)
+
   async getOrderStatus(req, res, next) {
     const { orderId } = req.params;
     const order = this.ordersMap.get(orderId);
@@ -108,6 +108,11 @@ class ProductController {
       console.error(error);
       res.status(500).json({ message: "Server error" });
     }
+  }
+  // them cau 8
+  async getID (req, res, next) {
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
   }
 }
 
